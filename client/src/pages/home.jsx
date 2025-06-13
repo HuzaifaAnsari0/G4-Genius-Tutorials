@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GraduationCap, BookOpen, Users, Phone, MapPin, Mail, Star, ChevronDown, Globe, Award, Clock, Target, Menu, X, ArrowRight, CheckCircle } from 'lucide-react';
+import image1 from '../assets/image1.jpeg';
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -35,7 +36,7 @@ const Home = () => {
       title: 'Vedic Math',
       age: '10 years onwards',
       tagline: 'Discover the magic of numbers – Vedic Math makes calculations faster, easier, and fun!',
-      benefits: ['Faster Calculations', 'Improves Memory', 'Boosts Self-Confidence', 'Increases Speed and Accuracy', 'Cultivates an Interest in Numbers'],
+      benefits: ['Faster Calculations', 'Improves Memory', 'Boosts Self-Confidence', 'Increases Speed and Accuracy', 'Cultivates an Interest in Numbers','Enhances Problem-Solving and Analytical Thinking'],
       icon: '🧮',
       gradient: 'from-blue-100 to-cyan-50'
     },
@@ -49,18 +50,18 @@ const Home = () => {
     },
     {
       title: 'Calligraphy',
-      age: 'All levels',
+      age: '10 years onwards',
       tagline: 'Master over 60 scripts and styles',
       benefits: ['Develops Fine Motor Skills', 'Fosters Patience', 'Helps One to Focus', 'Builds Creativity'],
       icon: '🎨',
-      special: 'Rs. 1500/month (12 sessions)',
+    //   special: 'Rs. 1500/month (12 sessions)',
       gradient: 'from-purple-100 to-pink-50'
     },
     {
       title: 'Phonics and Spellings',
       age: 'All ages',
       tagline: 'Build strong language foundations',
-      benefits: ['Helps Get Correct Spellings and Pronunciation', 'Develops Oral and Written Skills'],
+      benefits: ['Helps Get Correct Spellings and Pronunciation', 'Develops Oral and Written Skills','Enhances reading fluency and comprehension','Builds confidence in speaking and writing'],
       icon: '🗣️',
       gradient: 'from-green-100 to-emerald-50'
     }
@@ -274,12 +275,8 @@ const Home = () => {
               </div>
               
               <div className="relative">
-                <div className="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl p-8 h-96 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🎓</div>
-                    <h4 className="text-2xl font-bold text-gray-800 mb-2">10+ Years</h4>
-                    <p className="text-gray-600">of Educational Excellence</p>
-                  </div>
+                <div className="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl p-4 h-96 flex items-center justify-center">
+                  <img src={image1} alt="Genius Tutorials" className="w-full h-full object-cover rounded-3xl shadow-lg" />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   500+<br />Students
@@ -464,7 +461,7 @@ const Home = () => {
                       rel="noopener noreferrer"
                       className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
                     >
-                      8452957695
+                      8452957695 / 8451044606
                     </a>
                   </div>
                 </div>
@@ -497,7 +494,7 @@ const Home = () => {
                   rel="noopener noreferrer"
                   className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
                 >
-                  8451044606
+                  8451044606 / 8452957695
                 </a>
               </div>
             </div>
@@ -506,7 +503,7 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 bg-gray-900 text-white">
+      <footer className="pt-14 pb-8 px-6 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div className="text-center md:text-left">
@@ -562,16 +559,16 @@ const Home = () => {
                     rel="noopener noreferrer"
                     className="text-gray-300 hover:text-green-400 transition-colors duration-300"
                   >
-                    8452957695
+                    8452957695 / 8451044606
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-gray-400" />
                   <a 
-                    href="mailto:g4genius@gmail.com"
+                    href="mailto:brilliantlearners2020@gmail.com"
                     className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
                   >
-                    g4genius@gmail.com
+                    brilliantlearners2020@gmail.com
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
