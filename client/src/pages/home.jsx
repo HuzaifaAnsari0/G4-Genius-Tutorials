@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GraduationCap, BookOpen, Users, Phone, MapPin, Mail, Star, ChevronDown, Globe, Award, Clock, Target, Menu, X, ArrowRight, CheckCircle } from 'lucide-react';
 import image1 from '../assets/image1.jpeg';
+import Testimonials from '../components/testimonials';
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -275,8 +276,8 @@ const Home = () => {
               </div>
               
               <div className="relative">
-                <div className="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl p-4 h-96 flex items-center justify-center">
-                  <img src={image1} alt="Genius Tutorials" className="w-full h-full object-cover rounded-3xl shadow-lg" />
+                <div className="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-3 h-96 flex items-center justify-center">
+                  <img src={image1} alt="Genius Tutorials" className="w-full h-full object-cover rounded-2xl shadow-lg" />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                   500+<br />Students
@@ -428,6 +429,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+              <Testimonials />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
