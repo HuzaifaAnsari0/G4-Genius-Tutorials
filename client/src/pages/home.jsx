@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GraduationCap, BookOpen, Users, Phone, MapPin, Mail, Star, ChevronDown, Globe, Award, Clock, Target, Menu, X, ArrowRight, CheckCircle } from 'lucide-react';
 import image1 from '../assets/image1.jpeg';
-import Testimonials from '../components/testimonials';
+import contact from '../assets/contact.png';
+import AchievementDashboard from '../components/achievement';
+import logo from '../assets/logo.png';
+// import Testimonials from '../components/testimonials';
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -91,12 +94,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
+              <img src={logo} alt="G4 Genius Logo" className="h-12 w-14" />
               <div>
                 <h1 className="text-xl font-bold text-gray-800">
-                  G4 Genius Tutorials
+                  G4 GENIUS TUTORIALS
                 </h1>
                 <p className="text-xs text-orange-600 font-medium">10 Years of Excellence</p>
               </div>
@@ -288,21 +289,23 @@ const Home = () => {
         </div>
       </section>
 
+      <AchievementDashboard />
+
       {/* Academics Section */}
-      <section id="academics" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className={`transform transition-all duration-1000 ${isVisible.academics ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                📚 Academic <span className="text-blue-600">Programs</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Comprehensive academic support across multiple boards and subjects
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              {/* Subjects */}
+        <section id="academics" className="pt-14 pb-6 px-6 bg-gradient-to-br from-blue-50 via-white to-purple-100">
+          <div className="max-w-7xl mx-auto">
+            <div className={`transform transition-all duration-1000 ${isVisible.academics ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+              📚 Academic <span className="text-blue-600">Programs</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive academic support across multiple boards and subjects
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {/* Subjects */}
               <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center mr-4">
@@ -344,7 +347,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Boards */}
+              {/* Boards Covered */}
               <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mr-4">
@@ -353,31 +356,155 @@ const Home = () => {
                   <h3 className="text-2xl font-bold text-gray-800">Boards Covered</h3>
                 </div>
                 <div className="space-y-3">
-                  {boards.map((board, index) => (
-                    <div 
-                      key={board}
-                      className="flex items-center space-x-3 p-3 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-all duration-300 border border-cyan-100"
-                    >
-                      <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
-                      <span className="text-gray-700 font-medium">{board}</span>
-                    </div>
-                  ))}
+                  {boards.map((board, index) => {
+                    // Only show dropdown for first 4 boards (IGCSE, ICSE, CBSE, SSC)
+                    const hasDropdown = index < 4;
+                    return (
+                      <div key={board} className="flex flex-col">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (hasDropdown) {
+                              setIsVisible((prev) => ({
+                                ...prev,
+                                [`board_${index}`]: !prev[`board_${index}`],
+                              }));
+                            }
+                          }}
+                          className="flex items-center space-x-3 p-3 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-all duration-300 border border-cyan-100 font-medium text-gray-700 focus:outline-none w-full"
+                        >
+                          <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+                          <span>{board}</span>
+                          {hasDropdown && (
+                            <span className="ml-auto flex items-center">
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform ${
+                                  isVisible[`board_${index}`] ? "rotate-180" : ""
+                                }`}
+                              />
+                            </span>
+                          )}
+                        </button>
+                        {/* Subjects for each board */}
+                        {hasDropdown && isVisible[`board_${index}`] && (
+                          <div className="ml-6 mt-2 space-y-2">
+                            {(() => {
+                              switch (board) {
+                                case "SSC":
+                                  return [
+                                    "English",
+                                    "Hindi",
+                                    "Marathi",
+                                    "French",
+                                    "Science 1 and 2",
+                                    "Algebra and Geometry",
+                                    "History and Geography",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
+                                case "ICSE":
+                                  return [
+                                    "English",
+                                    "Physics",
+                                    "Chemistry",
+                                    "Biology",
+                                    "Mathematics",
+                                    "Social Science",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
+                                case "CBSE":
+                                  return [
+                                    "English",
+                                    "Physics",
+                                    "Chemistry",
+                                    "Biology",
+                                    "Mathematics",
+                                    "Social Science",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
+                                case "IGCSE":
+                                  return (
+                                    <>
+                                      {[
+                                        "English (FLE /ESL)",
+                                        "French",
+                                        "Physics",
+                                        "Chemistry",
+                                        "Biology",
+                                        "Mathematics",
+                                        "Global Perspectives",
+                                      ].map((subject) => (
+                                        <div
+                                          key={subject}
+                                          className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                        >
+                                          <BookOpen className="h-4 w-4 text-cyan-600" />
+                                          <span>{subject}</span>
+                                        </div>
+                                      ))}
+                                      <div className="mt-4 bg-cyan-50 border border-cyan-200 rounded-lg p-3">
+                                        <div className="flex items-center mb-1">
+                                          <Award className="h-4 w-4 text-cyan-500 mr-2" />
+                                          <span className="font-semibold text-cyan-700 text-sm">
+                                            Cambridge Primary & Lower Secondary Checkpoint
+                                          </span>
+                                        </div>
+                                        <p className="text-xs text-gray-600 mb-1">
+                                          Training & complete guidance provided for:
+                                        </p>
+                                        <div className="flex flex-wrap gap-2 mt-1">
+                                          {["English", "Science", "Math"].map((subject) => (
+                                            <span
+                                              key={subject}
+                                              className="inline-flex items-center px-2 py-1 bg-cyan-100 text-cyan-700 rounded text-xs"
+                                            >
+                                              <BookOpen className="h-3 w-3 mr-1" />
+                                              {subject}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    </>
+                                  );
+                                default:
+                                  return null;
+                              }
+                            })()}
+                          </div>
+                        )}
+                      </div>
+                    );
+                    })}
+                  </div>
+                  </div>
+                  
                 </div>
               </div>
-            </div>
-
-            {/* Grade Range */}
-            <div className="text-center">
-              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl px-8 py-6 shadow-lg">
-                <Target className="h-8 w-8" />
-                <span className="text-2xl font-bold">Grades 5 to 12</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              
+            </section>
 
-      {/* Extra-Curricular Courses */}
+            {/* Extra-Curricular Courses */}
       <section id="courses" className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className={`transform transition-all duration-1000 ${isVisible.courses ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -430,11 +557,9 @@ const Home = () => {
         </div>
       </section>
 
-              <Testimonials />
-
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className={`transform transition-all duration-1000 ${isVisible.contact ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -444,79 +569,82 @@ const Home = () => {
                 Ready to start your learning journey? Contact us today!
               </p>
             </div>
-            
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-2">Contact Person</h3>
-                <p className="text-xl text-white">Ms. Ramya V</p>
+            <div className="flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 gap-10">
+              <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+                <img
+                  src={contact}
+                  alt="Contact G4 Genius"
+                  className="rounded-2xl shadow-lg object-cover border-4 border-cyan-400"
+                  style={{ width: "80%", height: "80%" }}
+                />
               </div>
-              
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div className="flex items-center space-x-4 p-6 bg-white/10 rounded-2xl border border-white/20">
-                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                    <Phone className="h-6 w-6 text-white" />
+              {/* Contact Info Section */}
+              <div className="w-full md:w-1/2">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-2">Contact Person</h3>
+                  <p className="text-xl text-white">Ms. Ramya V</p>
+                </div>
+                <div className="grid gap-8 mb-8">
+                  <div className="flex items-center space-x-4 p-6 bg-white/10 rounded-2xl border border-white/20">
+                    <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                      <Phone className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-300">Phone</p>
+                      <a
+                        href="https://wa.link/c1gtlw"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
+                      >
+                        8452957695 / 8451044606
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-300">Phone</p>
-                    <a 
-                      href="https://wa.link/c1gtlw" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
-                    >
-                      8452957695 / 8451044606
-                    </a>
+                  <div className="flex items-start space-x-4 p-6 bg-white/10 rounded-2xl border border-white/20">
+                    <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mt-1">
+                      <MapPin className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-300 mb-2">Address</p>
+                      <a
+                        href="https://maps.google.com/?q=17/1/5+Sterling+CHS+Bhawani+Nagar+Marol+Maroshi+Road+Andheri+East"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm leading-relaxed text-white hover:text-blue-400 transition-colors duration-300"
+                      >
+                        17/1/5, Sterling CHS, Bhawani Nagar,<br />
+                        Marol Maroshi Road, Next to Marol Education Academy,
+                        Andheri East
+                      </a>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="flex items-start space-x-4 p-6 bg-white/10 rounded-2xl border border-white/20">
-                  <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mt-1">
-                    <MapPin className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-300 mb-2">Address</p>
-                    <a 
-                      href="https://maps.google.com/?q=17/1/5+Sterling+CHS+Bhawani+Nagar+Marol+Maroshi+Road+Andheri+East"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm leading-relaxed text-white hover:text-blue-400 transition-colors duration-300"
-                    >
-                      17/1/5, Sterling CHS, Bhawani Nagar,<br />
-                      Marol Maroshi Road, Next to Marol Education Academy,
-                      Andheri East
-                    </a>
-                  </div>
+                <div className="text-center p-6 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl border border-white/20">
+                  <p className="text-sm text-gray-300 mb-2">Calligraphy Contact:</p>
+                  <a
+                    href="https://wa.link/c1gtlw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
+                  >
+                    8451044606 / 8452957695
+                  </a>
                 </div>
-              </div>
-              
-              <div className="text-center p-6 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl border border-white/20">
-                <p className="text-sm text-gray-300 mb-2">Calligraphy Contact:</p>
-                <a 
-                  href="https://wa.link/c1gtlw" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
-                >
-                  8451044606 / 8452957695
-                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
       <footer className="pt-14 pb-8 px-6 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start space-x-3 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <GraduationCap className="h-7 w-7 text-white" />
-                </div>
+                              <img src={logo} alt="G4 Genius Logo" className="h-16 w-20" />
                 <div>
                   <h3 className="text-2xl font-bold text-white">
-                    G4 Genius Tutorials
+                    G4 GENIUS TUTORIALS
                   </h3>
                   <p className="text-xs text-gray-400">Excellence in Education</p>
                 </div>
