@@ -348,7 +348,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Boards Covered */}
+             {/* Boards Covered */}
               <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mr-4">
@@ -359,7 +359,7 @@ const Home = () => {
                 <div className="space-y-3">
                   {boards.map((board, index) => {
                     // Only show dropdown for first 4 boards (IGCSE, ICSE, CBSE, SSC)
-                    const hasDropdown = index < 4;
+                    const hasDropdown = index < 4 || board === "HSC" || board === "AS and A-Levels" || board === "IBDP";
                     return (
                       <div key={board} className="flex flex-col">
                         <button
@@ -487,6 +487,48 @@ const Home = () => {
                                       </div>
                                     </>
                                   );
+                                case "HSC":
+                                  return [
+                                    "English",
+                                    "Math",
+                                    "Chemistry",
+                                    "Biology",
+                                    "Physics",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
+                                case "AS and A-Levels":
+                                  return [
+                                    "English",
+                                    "Chemistry",
+                                    "Biology",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
+                                case "IBDP":
+                                  return [
+                                    "Chemistry",
+                                  ].map((subject) => (
+                                    <div
+                                      key={subject}
+                                      className="flex items-center space-x-2 p-2 bg-cyan-100 rounded hover:bg-cyan-200 text-sm"
+                                    >
+                                      <BookOpen className="h-4 w-4 text-cyan-600" />
+                                      <span>{subject}</span>
+                                    </div>
+                                  ));
                                 default:
                                   return null;
                               }
@@ -495,17 +537,13 @@ const Home = () => {
                         )}
                       </div>
                     );
-                    })}
-                  </div>
-                  </div>
-                  
+                  })}
                 </div>
               </div>
-              </div>
-              
-            </section>
-
-            {/* Extra-Curricular Courses */}
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="courses" className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className={`transform transition-all duration-1000 ${isVisible.courses ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -620,17 +658,6 @@ const Home = () => {
                       </a>
                     </div>
                   </div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl border border-white/20">
-                  <p className="text-sm text-gray-300 mb-2">Calligraphy Contact:</p>
-                  <a
-                    href="https://wa.link/c1gtlw"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
-                  >
-                    8451044606 / 8452957695
-                  </a>
                 </div>
               </div>
             </div>
