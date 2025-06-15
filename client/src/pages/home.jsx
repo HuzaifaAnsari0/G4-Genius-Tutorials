@@ -3,6 +3,7 @@ import { GraduationCap, BookOpen, Users, Phone, MapPin, Mail, Star, ChevronDown,
 import image1 from '../assets/image1.jpeg';
 import contact from '../assets/contact.png';
 import AchievementDashboard from '../components/achievement';
+import navlogo from '../assets/navlogo.png';
 import logo from '../assets/logo.png';
 // import Testimonials from '../components/testimonials';
 
@@ -94,7 +95,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="G4 Genius Logo" className="h-12 w-14" />
+              <img src={navlogo} alt="G4 Genius Logo" className="h-12 w-14" />
               <div>
                 <h1 className="text-xl font-bold text-gray-800">
                   G4 GENIUS TUTORIALS
