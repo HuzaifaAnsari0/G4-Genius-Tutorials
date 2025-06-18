@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import navlogo from "../assets/logo.png"; // Update the path if your logo is elsewhere
+import navlogo from "../assets/navlogo.png"; // Update the path if your logo is elsewhere
 import { Menu, X } from "lucide-react"; // Or your icon library
 
 const Navbar = ({ scrollToSection, activeSection }) => {
