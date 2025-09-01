@@ -109,7 +109,7 @@ const Footer = ({ scrollToSection }) => {
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-green-400 transition-colors duration-300"
                 >
-                  8452957695 / 8451044606
+                 9137398377 / 8451044606
                 </a>
               </div>
               <div className="flex items-center space-x-3">
