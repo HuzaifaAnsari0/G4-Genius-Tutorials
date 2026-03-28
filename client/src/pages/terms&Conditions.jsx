@@ -47,7 +47,7 @@ const TermsAndConditions = () => (
     <div className="mt-8">
       <p>If you have any questions, please contact us at:</p>
       <ul className="mt-2">
-        <li>📞9137398377 / 8451044606</li>
+        <li>📞9137398377 / 8452957695</li>
         <li>📧 brilliantlearners2020@gmail.com</li>
       </ul>
     </div>

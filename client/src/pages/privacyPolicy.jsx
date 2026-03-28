@@ -66,7 +66,7 @@ const PrivacyPolicy = () => (
       <p>If you have privacy-related questions, contact us at:</p>
       <ul className="mt-2">
         <li>📧 brilliantlearners2020@gmail.com</li>
-        <li>📞9137398377 / 8451044606</li>
+        <li>📞9137398377 / 8452957695</li>
       </ul>
     </div>
   </div>

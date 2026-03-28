@@ -127,6 +127,25 @@ const Home = () => {
       <section id="home" className="pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div className="max-w-7xl mx-auto">
           <div className={`transform transition-all duration-1000 ${isVisible.home ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className="mb-10 rounded-2xl border border-orange-200 bg-gradient-to-r from-orange-50 via-amber-50 to-yellow-50 p-5 md:p-6 shadow-md">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <p className="text-base md:text-lg font-bold text-orange-700">
+                    Admission Open for the New Academic Year - Lowest fee structure
+                  </p>
+                  <p className="text-sm md:text-base text-gray-700 mt-1">
+                    Enquire Now and take the advantage of the free courses.
+                  </p>
+                </div>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-all duration-300 shadow-sm hover:shadow-md"
+                >
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
             <div className="text-center mb-16">
               <div className="inline-flex items-center space-x-2 bg-orange-100 rounded-full px-6 py-3 mb-8 border border-orange-200">
                 <Award className="h-5 w-5 text-orange-600" />
@@ -595,7 +614,7 @@ const Home = () => {
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-white hover:text-green-400 transition-colors duration-300"
                       >
-                       9137398377 / 8451044606
+                       9137398377 / 8452957695
                       </a>
                     </div>
                   </div>

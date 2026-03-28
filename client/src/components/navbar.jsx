@@ -46,11 +46,19 @@ return (
                         { name: 'About', id: 'about' },
                         { name: 'Academics', id: 'academics' },
                         { name: 'Courses', id: 'courses' },
-                        { name: 'Contact', id: 'contact' }
+                        { name: 'Contact', id: 'contact' },
+                        { name: 'Blogs', id: 'blogs', url: 'https://g4geniustutorials.com/blogs/' }
                     ].map((item) => (
                         <button
                             key={item.id}
-                            onClick={() => handleNavigation(item.id)}
+                            onClick={() => {
+                                if (item.url) {
+                                    window.location.href = item.url;
+                                    setMobileMenuOpen(false);
+                                    return;
+                                }
+                                handleNavigation(item.id);
+                            }}
                             className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${
                                 isHomePage && activeSection === item.id 
                                     ? 'text-blue-600' 
@@ -83,11 +91,19 @@ return (
                             { name: 'About', id: 'about' },
                             { name: 'Academics', id: 'academics' },
                             { name: 'Courses', id: 'courses' },
-                            { name: 'Contact', id: 'contact' }
+                            { name: 'Contact', id: 'contact' },
+                            { name: 'Blogs', id: 'blogs', url: 'https://g4geniustutorials.com/blogs/' }
                         ].map((item) => (
                             <button
                                 key={item.id}
-                                onClick={() => handleNavigation(item.id)}
+                                onClick={() => {
+                                    if (item.url) {
+                                        window.location.href = item.url;
+                                        setMobileMenuOpen(false);
+                                        return;
+                                    }
+                                    handleNavigation(item.id);
+                                }}
                                 className="text-left px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                             >
                                 {item.name}
