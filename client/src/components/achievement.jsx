@@ -12,9 +12,9 @@ const AchievementDashboard = () => {
                     color: 'bg-blue-500',
                     lightColor: 'bg-blue-50',
                     students: [
-                        { name: 'Yashaya', subjects: 'English, Math, Biology, Physics, Chemistry', score: '91.5%' },
-                        { name: 'Tanish', subjects: 'English, Math, Biology, Physics, Chemistry', score: '90.66%' },
-                        { name: 'Samara', subjects: 'English, Math, Biology, Physics, Chemistry', score: '89.5%' },
+                        { name: 'Yashaya', subjects: 'Math, Biology, Physics, Chemistry', score: '91.5%' },
+                        { name: 'Tanish', subjects: 'Math, Biology, Physics, Chemistry', score: '90.66%' },
+                        { name: 'Samara', subjects: 'Math, Biology, Physics, Chemistry', score: '89.5%' },
                         { name: 'Ishaan', subjects: 'English, Math, Biology, Physics, Chemistry', score: '83%' }
                     ]
                 }
